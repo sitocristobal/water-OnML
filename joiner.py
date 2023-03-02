@@ -12,7 +12,7 @@ def joiner():
     # Set the names of the files which contain the data
     amonio = "ammonium_nor.csv"
     conductividad = "conductivity_nor.csv"
-    nitratos = "nitrates_nor.csv"
+    nivel = "water level_nor.csv"
     oxigeno = "dissolved oxygen_nor.csv"
     ph = "pH_nor.csv"
     temperatura = "water temperature_nor.csv"
@@ -21,7 +21,7 @@ def joiner():
     # Read the files and store them as a pandas database
     df = pd.read_csv(f'data/{amonio}', delimiter=';', parse_dates=['date'], index_col=['date'])
     dfConductividad = pd.read_csv(f'data/{conductividad}', delimiter=';', parse_dates=['date'], index_col=['date'])
-    dfNitratos = pd.read_csv(f'data/{nitratos}', delimiter=';', parse_dates=['date'], index_col=['date'])
+    dfNivel = pd.read_csv(f'data/{nivel}', delimiter=';', parse_dates=['date'], index_col=['date'])
     dfOxigeno = pd.read_csv(f'data/{oxigeno}', delimiter=';', parse_dates=['date'], index_col=['date'])
     dfph = pd.read_csv(f'data/{ph}', delimiter=';', parse_dates=['date'], index_col=['date'])
     dfTemperatura = pd.read_csv(f'data/{temperatura}', delimiter=';', parse_dates=['date'], index_col=['date'])
@@ -30,7 +30,7 @@ def joiner():
 
     # Extract the desired columns
     conductividad = dfConductividad['value']
-    nitratos = dfNitratos['value']
+    nitratos = dfNivel['value']
     oxigeno = dfOxigeno['value']
     ph = dfph['value']
     temperatura = dfTemperatura['value']
@@ -38,11 +38,11 @@ def joiner():
 
     # Insert the new columns in the database
     df.insert(1, "conductivity", conductividad, True)
-    df.insert(2, "nitrates", nitratos, True)
     df.insert(3, "oxygen", oxigeno, True)
     df.insert(4, "pH", ph, True)
-    df.insert(5, "water temperature", temperatura, True)
     df.insert(6, "turbidity", turbidez, True)
+    df.insert(2, "water level", nitratos, True)
+    df.insert(5, "water temperature", temperatura, True)
 
     cols = list(df.columns.values.tolist())
     cols = [i.replace("value", "ammonium") for i in cols]

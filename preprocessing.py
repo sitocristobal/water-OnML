@@ -18,15 +18,15 @@ timeStep = '15 min'
 
 if __name__ == '__main__':
 
-    for varName in varNames:
+    # for varName in varNames:
+        
+    #     # Fill in the gaps in the time series
+    #     checkGaps(File=f'{varName}.csv', timestep=timeStep)
+    #     print('[INFO] checkGaps() DONE')
 
-        # Fill in the gaps in the time series
-        checkGaps(File=f'{varName}.csv', timestep=timeStep)
-        print('[INFO] checkGaps() DONE')
-
-        # Normalize the data. See normalizer.py for details
-        normalizer(File=f'{varName}_full.csv', timeframe=timeFrame, timestep=timeStep)
-        print('[INFO] normalizer() DONE')
+    #     # Normalize the data. See normalizer.py for details
+    #     normalizer(File=f'{varName}_full.csv', timeframe=timeFrame, timestep=timeStep)
+    #     print('[INFO] normalizer() DONE')
         
     
     # Join the normalized databases
