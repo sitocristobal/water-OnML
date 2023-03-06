@@ -8,8 +8,6 @@ from datetime import datetime
 and columner() takes the filled data base and adds a series of time-related columns to make that information
 more accessible"""
 
-# TODO habría que adaptar normalizer() para que ejecute los while loops. See lines 47, and 177
-
 # Function to get the index of the firts Monday
 def findMonday(Dataframe):
     
@@ -23,7 +21,7 @@ def findMonday(Dataframe):
     
     return i
 
-def columner(File, timeframe, timestep):
+def columner(File, timestep):
 
     if timestep == '15 min':
     
@@ -88,7 +86,7 @@ def columner(File, timeframe, timestep):
         # Save the new new file
         df.index.name = 'date'
         cols = list(df.columns.values.tolist())
-        df.to_csv(f'data/{fileName[0:-5]}_nor.csv', sep=';', encoding='utf-8', index=True, header=cols)
+        df.to_csv(f'data/{fileName[0:-5]}_col.csv', sep=';', encoding='utf-8', index=True, header=cols)
 
     elif timestep == '1 day':
         
@@ -147,4 +145,4 @@ def columner(File, timeframe, timestep):
         # Save the new new file
         df.index.name = 'date'
         cols = list(df.columns.values.tolist())
-        df.to_csv(f'data/{fileName[0:-5]}_nor.csv', sep=';', encoding='utf-8', index=False, header=cols)
+        df.to_csv(f'data/{fileName[0:-5]}_col.csv', sep=';', encoding='utf-8', index=False, header=cols)
